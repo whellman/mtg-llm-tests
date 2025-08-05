@@ -1,2 +1,3 @@
 __pycache__/
+.env
 # Add any API-key files or local credentials here too!
