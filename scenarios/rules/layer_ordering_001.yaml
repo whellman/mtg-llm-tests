@@ -1,0 +1,11 @@
+id: rules-001
+category: rules
+description: Evaluate effect layering between continuous effects.
+prompt: >
+  You control a creature with base power/toughness 1/1.
+  Spell A makes it 5/5 until end of turn.
+  Spell B gives it +1/+1 until end of turn.
+  What is its final power/toughness?
+expected_output: "6/6"
+evaluator: exact
+

@@ -3,4 +3,8 @@ torch
 accelerate
 bitsandbytes
 outlines
-python-dotenv
+# openai
+PyYAML
+tqdm
+sentence-transformers  # if you want semantic matching
+

@@ -1,3 +1,5 @@
 __pycache__/
-.env
+# .env # if using. not needed if using cloud "secrets"
+# api_keys.yaml
 # Add any API-key files or local credentials here too!
+*.log
