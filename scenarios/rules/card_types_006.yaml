@@ -1,7 +1,7 @@
-id: card_types_001
+id: card_types_006
 category: rules
 subcategory: card_types
 Description: "Test if specific cards can target others based on their types."
-prompt: "Can Dispel be used to counter a Sorcery card?"
+prompt: "Can Disenchant target a Goblin Wizard?"
 expected_output: "no"
 evaluator: contains

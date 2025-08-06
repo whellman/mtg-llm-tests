@@ -1,4 +1,7 @@
-id: phases_and_turns_test_1
+id: phases_and_turns_001
+category: rules
+subcategory: phases_and_turns
+Description: "Test the understanding of the phases and turns in Magic: The Gathering."
 prompt: "List the five phases of a turn in Magic: The Gathering."
 expected_output: "The five phases of a turn in Magic: The Gathering are the Beginning Phase, Main Phase 1, Combat Phase, Main Phase 2, and the Ending Phase."
 evaluator: contains

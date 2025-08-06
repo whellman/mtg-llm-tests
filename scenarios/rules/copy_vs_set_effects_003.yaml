@@ -1,5 +1,6 @@
-id: rules-003
+id: copy_vs_set_effects_003
 category: rules
+subcategory: copy_vs_set_effects
 description: Evaluate copy effects vs set effects.
 prompt: >
   You copy a creature that is currently modified
