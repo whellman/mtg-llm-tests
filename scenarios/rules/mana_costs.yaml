@@ -1,0 +1,4 @@
+id: mana_costs_test_1
+prompt: "How do you calculate the total mana cost of a card with multiple colored symbols?"
+expected_output: "To calculate the total mana cost of a card with multiple colored symbols, you sum the individual costs of each symbol. For example, a card with {R}{W} has a total mana cost of 2."
+evaluator: contains

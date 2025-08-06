@@ -1,0 +1,4 @@
+id: simple_triggered_abilities_test_1
+prompt: "What happens when a creature enters the battlefield tapped?"
+expected_output: "When a creature enters the battlefield tapped, it remains tapped until an effect specifically untaps it."
+evaluator: contains

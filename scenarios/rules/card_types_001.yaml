@@ -1,0 +1,4 @@
+id: card_types_test_1
+prompt: "Can Dispel be used to counter a Sorcery card?"
+expected_output: "no"
+evaluator: contains

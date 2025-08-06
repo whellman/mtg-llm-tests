@@ -1,0 +1,10 @@
+id: rules-002
+category: rules
+description: Evaluate state based effects.
+prompt: >
+  If you have two 1/1 creatures enchanted with an Aura that
+  gives +0/+1, and the enchantment is destroyed, what happens to
+  the creatures if a -1/-1 effect is also present?
+expected_output: "die"
+evaluator: contains
+

@@ -1,0 +1,9 @@
+id: rules-003
+category: rules
+description: Evaluate copy effects vs set effects.
+prompt: >
+  You copy a creature that is currently modified
+  by an Equipment. What does the copy inherit?
+expected_output: "base"
+evaluator: contains
+
