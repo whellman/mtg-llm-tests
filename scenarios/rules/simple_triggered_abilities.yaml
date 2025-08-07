@@ -4,4 +4,4 @@ subcategory: simple_triggered_abilities
 Description: "Test the understanding of simple triggered abilities in Magic: The Gathering."
 prompt: "What happens when a creature enters the battlefield tapped?"
 expected_output: "When a creature enters the battlefield tapped, it remains tapped until an effect specifically untaps it."
-evaluator: contains
+evaluator: semantic

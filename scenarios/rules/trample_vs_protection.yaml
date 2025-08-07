@@ -1,0 +1,10 @@
+id: trample_vs_protection_001
+category: rules
+subcategory: trample_vs_protection
+Description: "Test understanding of how trample interacts with protection."
+prompt: >
+  If a creature with trample attacks and is blocked
+  by a creature with protection from the attacking
+  creature's color, does trample damage still resolve?
+expected_output: "yes"
+evaluator: contains

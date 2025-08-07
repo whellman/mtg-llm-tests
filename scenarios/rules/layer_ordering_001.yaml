@@ -9,4 +9,3 @@ prompt: >
   What is its final power/toughness?
 expected_output: "6/6"
 evaluator: exact
-
