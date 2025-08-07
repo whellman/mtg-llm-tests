@@ -1,5 +1,6 @@
-id: rules-002
+id: state_based_effects_001
 category: rules
+subcategory: state_based_effects
 description: Evaluate state based effects.
 prompt: >
   If you have two 1/1 creatures enchanted with an Aura that

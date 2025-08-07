@@ -1,7 +1,0 @@
-id: layer_rules_001
-category: rules
-subcategory: layer_rules
-Description: "Test the understanding of the layers of rule interactions in Magic: The Gathering."
-prompt: "Explain the layers of rule interactions in Magic: The Gathering."
-expected_output: "The layers of rule interactions in Magic: The Gathering are a system that determines the order in which rules are applied during a game. There are seven layers, ordered as follows: 1. Layer 1: Copy Effects, 2. Layer 2: Control Changes, 3. Layer 3: Text-Changing Effects, 4. Layer 4: Type-Changing Effects, 5. Layer 5: Color-Changing Effects, 6. Layer 6: Ability Adding/Removing Effects, 7. Layer 7: Power/Toughness-Changing Effects."
-evaluator: contains

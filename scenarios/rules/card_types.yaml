@@ -1,7 +1,0 @@
-id: card_types_001
-category: rules
-subcategory: card_types
-Description: "Test the understanding of card types in Magic: The Gathering."
-prompt: "What are the different types of cards in Magic: The Gathering?"
-expected_output: "The different types of cards in Magic: The Gathering include Creature, Sorcery, Instant, Artifact, Enchantment, Planeswalker, Land, and Tribal."
-evaluator: contains

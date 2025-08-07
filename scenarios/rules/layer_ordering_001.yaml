@@ -1,5 +1,6 @@
-id: rules-001
+id: layer_ordering_001
 category: rules
+subcategory: layer_ordering
 description: Evaluate effect layering between continuous effects.
 prompt: >
   You control a creature with base power/toughness 1/1.
