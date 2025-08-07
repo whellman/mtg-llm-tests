@@ -1,0 +1,10 @@
+id: combat_math_001
+category: combat
+subcategory: combat_math
+Description: "Test combat math ability."
+prompt: >
+  "You are in a combat scenario where your opponennt has a 6/6
+  creature with trample. If you block with a 3/3 creature, how
+  much damage will you take?""
+expected_output: "3"
+evaluator: exact

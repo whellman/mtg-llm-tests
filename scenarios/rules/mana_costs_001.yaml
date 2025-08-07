@@ -1,0 +1,7 @@
+id: mana_costs_001
+category: rules
+subcategory: mana_costs
+Description: "Test the understanding of mana costs in Magic: The Gathering."
+prompt: "What is the total mana cost of a card with the mana symbols {B}{R}{G}?"
+expected_output: "3"
+evaluator: exact
