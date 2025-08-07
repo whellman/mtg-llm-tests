@@ -1,5 +1,6 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 import os
+from typing import List, Union
 
 class HFTransformerModel:
     def __init__(self, model_name: str):
@@ -20,5 +21,11 @@ class HFTransformerModel:
         )
 
     def run(self, prompt: str) -> str:
+        """Run inference on a single prompt"""
         result = self.pipeline(prompt)
         return result[0]["generated_text"].strip()
+    
+    def run_batch(self, prompts: List[str]) -> List[str]:
+        """Run batch inference on multiple prompts"""
+        results = self.pipeline(prompts)
+        return [result[0]["generated_text"].strip() for result in results]

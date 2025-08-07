@@ -35,8 +35,14 @@ dataloader = DataLoader(dataset, batch_size=4, collate_fn=collate_fn)
 
 # Process scenarios in batches
 for batch in dataloader:
-    for scenario in batch:
-        output = model.run(scenario["prompt"])
+    # Extract prompts from the batch
+    prompts = [scenario["prompt"] for scenario in batch]
+    
+    # Run batch inference
+    outputs = model.run_batch(prompts)
+    
+    # Evaluate each result
+    for scenario, output in zip(batch, outputs):
         evaluator = get_evaluator(scenario["evaluator"])
         result = evaluator(output, scenario["expected_output"])
         print(f"{scenario['id']}: {'PASS' if result else 'FAIL'}")
