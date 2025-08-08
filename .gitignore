@@ -4,3 +4,4 @@ __pycache__/
 # Add any API-key files or local credentials here too!
 *.log
 .vscode/
+mypack.tar.gz
