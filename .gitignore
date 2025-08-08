@@ -3,3 +3,4 @@ __pycache__/
 # api_keys.yaml
 # Add any API-key files or local credentials here too!
 *.log
+.vscode/
