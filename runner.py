@@ -19,7 +19,7 @@ class ScenarioDataset(Dataset):
 def collate_fn(batch):
     return batch
 
-model_name = "meta-llama/Llama-2-7b-chat-hf"
+model_name = "mistralai/Mistral-7B-Instruct-v0.3" #"meta-llama/Llama-2-7b-chat-hf"
 model = HFTransformerModel(model_name)
 
 # Collect all scenarios
