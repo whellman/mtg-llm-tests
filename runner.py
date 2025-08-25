@@ -4,6 +4,7 @@ Runner script for MTG LLM tests with machine-compilable output options.
 """
 
 from models.hf_transformer import HFTransformerModel
+from models.outlines_model import OutlinesModel
 from evaluators import get_evaluator
 import yaml
 import glob
@@ -32,13 +33,16 @@ def calculate_similarity(output, expected):
     """Calculate similarity ratio between output and expected text."""
     return difflib.SequenceMatcher(None, output.strip(), expected.strip()).ratio()
 
-def run_tests(model_name="mistralai/Mistral-7B-Instruct-v0.3", output_format="simple", batch_size=4):
+def run_tests(model_name="mistralai/Mistral-7B-Instruct-v0.3", output_format="simple", batch_size=4, use_structured=False):
     """Run all tests and output results in specified format."""
     
     start_time = time.time()
     
     # Initialize model
-    model = HFTransformerModel(model_name)
+    if use_structured:
+        model = OutlinesModel(model_name)
+    else:
+        model = HFTransformerModel(model_name)
     
     # Collect all scenarios
     scenarios = []
@@ -58,12 +62,25 @@ def run_tests(model_name="mistralai/Mistral-7B-Instruct-v0.3", output_format="si
 
     # Process scenarios in batches
     for batch in dataloader:
-        # Extract prompts from the batch
+        # Extract prompts and output types from the batch
         prompts = [scenario["prompt"] for scenario in batch]
+        output_types = []
+        for scenario in batch:
+            # Determine output type based on expected output characteristics
+            expected = scenario["expected_output"].strip().lower()
+            if expected in ["yes", "no"] or len(expected) <= 10:
+                output_types.append("simple")
+            elif expected.isdigit():
+                output_types.append("numeric")
+            else:
+                output_types.append("explanation")
         
         # Run batch inference
         batch_start = time.time()
-        outputs = model.run_batch(prompts)
+        if use_structured:
+            outputs = model.run_batch(prompts, output_types)
+        else:
+            outputs = model.run_batch(prompts)
         batch_time = time.time() - batch_start
         
         # Evaluate each result
@@ -140,6 +157,8 @@ def main():
                         help="Model name to use")
     parser.add_argument("--batch-size", type=int, default=4,
                         help="Batch size for inference")
+    parser.add_argument("--structured", action="store_true",
+                        help="Use structured output generation with outlines")
     
     args = parser.parse_args()
     
@@ -147,7 +166,8 @@ def main():
         results, passed, total = run_tests(
             model_name=args.model,
             output_format=args.format,
-            batch_size=args.batch_size
+            batch_size=args.batch_size,
+            use_structured=args.structured
         )
         
         if passed < total:

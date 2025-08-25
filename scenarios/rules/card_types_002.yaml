@@ -2,6 +2,6 @@ id: card_types_002
 category: rules
 subcategory: card_types
 Description: "Test if specific cards can target others based on their types."
-prompt: "Can Essense Scatter be used to counter a Sorcery card?"
+prompt: "Can Shock target a creature with protection from red?"
 expected_output: "no"
-evaluator: contains
+evaluator: boolean

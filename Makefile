@@ -7,4 +7,18 @@ EXCLUDES := --exclude=$(PACKAGE_NAME) --exclude=.git
 # Default target
 package:
 	tar czf $(PACKAGE_NAME) $(EXCLUDES) .
-	@echo "Created $(PACKAGE_NAME)"
+
+# Test targets
+test:
+	python -m pytest tests/ -v
+
+test-structured:
+	python test_structured_output.py
+
+# Run tests with structured output
+run-structured:
+	python runner.py --structured --format detailed
+
+# Run tests with regular output
+run-regular:
+	python runner.py --format detailed
