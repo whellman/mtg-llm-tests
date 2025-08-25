@@ -1,0 +1,7 @@
+id: mana_costs_003
+category: rules
+subcategory: mana_costs
+description: "Test understanding of phyrexian mana costs."
+prompt: "A spell costs {B/P}. How much life must you pay if you choose to pay the phyrexian cost instead of black mana?"
+expected_output: "2"
+evaluator: exact

@@ -1,0 +1,7 @@
+id: pick_decision_009
+category: draft
+subcategory: pick_decision
+description: "Test draft pick decisions with format knowledge."
+prompt: "In a Limited format where creatures are generally weak, which is more valuable: a removal spell or a card advantage engine?"
+expected_output: "card advantage"
+evaluator: contains

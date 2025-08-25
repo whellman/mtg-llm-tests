@@ -1,0 +1,7 @@
+id: mana_costs_002
+category: rules
+subcategory: mana_costs
+description: "Test understanding of hybrid mana costs."
+prompt: "What is the minimum amount of mana needed to cast a spell with cost {2/W}{2/W}?"
+expected_output: "2"
+evaluator: exact

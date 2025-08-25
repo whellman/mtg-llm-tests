@@ -1,0 +1,7 @@
+id: pick_decision_018
+category: draft
+subcategory: pick_decision
+description: "Test draft pick decisions with color depth."
+prompt: "You're drafting a color with many playable cards. How does this affect your pick decisions?"
+expected_output: "more selective"
+evaluator: contains

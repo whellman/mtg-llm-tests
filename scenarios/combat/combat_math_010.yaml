@@ -1,0 +1,7 @@
+id: combat_math_010
+category: combat
+subcategory: combat_math
+description: "Test combat math with wither."
+prompt: "You control a 3/3 creature with wither. Your opponent blocks with a 2/2 creature. How many -1/-1 counters does the blocking creature get?"
+expected_output: "3"
+evaluator: exact

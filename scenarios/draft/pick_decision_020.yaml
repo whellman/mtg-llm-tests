@@ -1,0 +1,7 @@
+id: pick_decision_020
+category: draft
+subcategory: pick_decision
+description: "Test draft pick decisions with card evaluation."
+prompt: "When evaluating cards in a draft, which is generally more important: raw power level or synergy with your deck?"
+expected_output: "synergy"
+evaluator: contains

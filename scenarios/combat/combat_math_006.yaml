@@ -1,0 +1,7 @@
+id: combat_math_006
+category: combat
+subcategory: combat_math
+description: "Test combat math with double strike."
+prompt: "You control a 2/2 creature with double strike. Your opponent blocks with a 3/3 creature. How many damage steps does your creature deal damage?"
+expected_output: "2"
+evaluator: exact

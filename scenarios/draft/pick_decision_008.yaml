@@ -1,0 +1,7 @@
+id: pick_decision_008
+category: draft
+subcategory: pick_decision
+description: "Test draft pick decisions with splash colors."
+prompt: "You're drafting red and white. You're offered a blue card that's much better than anything in your main colors. Should you take it?"
+expected_output: "no"
+evaluator: contains

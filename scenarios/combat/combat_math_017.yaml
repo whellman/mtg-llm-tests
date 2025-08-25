@@ -1,0 +1,7 @@
+id: combat_math_017
+category: combat
+subcategory: combat_math
+description: "Test combat math with hexproof."
+prompt: "You control a 4/4 creature with hexproof. Your opponent casts a spell that targets all creatures. Does your hexproof creature get targeted?"
+expected_output: "no"
+evaluator: contains

@@ -1,0 +1,7 @@
+id: pick_decision_014
+category: draft
+subcategory: pick_decision
+description: "Test draft pick decisions with bombs."
+prompt: "You're offered a powerful rare creature and a solid common removal spell. Which should you prioritize if both are in your colors?"
+expected_output: "removal spell"
+evaluator: contains

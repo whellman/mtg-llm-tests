@@ -1,0 +1,7 @@
+id: pick_decision_003
+category: draft
+subcategory: pick_decision
+description: "Test draft pick decisions with removal spells."
+prompt: "In a Limited format, which card is generally more valuable: a 2-mana 2/2 creature or a 2-mana instant that can destroy any creature?"
+expected_output: "removal spell"
+evaluator: contains

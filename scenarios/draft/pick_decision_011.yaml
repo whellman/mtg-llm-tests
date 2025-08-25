@@ -1,0 +1,7 @@
+id: pick_decision_011
+category: draft
+subcategory: pick_decision
+description: "Test draft pick decisions with mana curve."
+prompt: "Your draft deck has many expensive spells but few cheap ones. What type of card should you prioritize?"
+expected_output: "low mana spells"
+evaluator: contains

@@ -1,0 +1,7 @@
+id: combat_math_007
+category: combat
+subcategory: combat_math
+description: "Test combat math with protection."
+prompt: "You attack with a red 4/4 creature. Your opponent blocks with a white 3/3 creature with protection from red. How much damage does the blocking creature take?"
+expected_output: "0"
+evaluator: exact

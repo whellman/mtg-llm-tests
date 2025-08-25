@@ -1,0 +1,7 @@
+id: combat_math_004
+category: combat
+subcategory: combat_math
+description: "Test combat math with first strike."
+prompt: "You control a 2/2 creature with first strike. Your opponent blocks with a 3/3 creature. How many creatures die in the first strike damage step?"
+expected_output: "1"
+evaluator: exact

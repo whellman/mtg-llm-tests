@@ -1,0 +1,7 @@
+id: card_types_008
+category: rules
+subcategory: card_types
+description: "Test understanding of card types and supertypes."
+prompt: "What makes a card a 'basic' land? Can you have more than 4 copies of a basic land in your deck?"
+expected_output: "supertype"
+evaluator: contains

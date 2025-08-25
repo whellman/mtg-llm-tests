@@ -1,0 +1,7 @@
+id: combat_math_020
+category: combat
+subcategory: combat_math
+description: "Test combat math with haste."
+prompt: "You play a creature with haste during your main phase. Can you attack with it this turn?"
+expected_output: "yes"
+evaluator: contains

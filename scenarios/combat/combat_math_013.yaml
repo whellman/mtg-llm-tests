@@ -1,0 +1,7 @@
+id: combat_math_013
+category: combat
+subcategory: combat_math
+description: "Test combat math with trample and deathtouch."
+prompt: "You attack with a 1/1 creature with trample and deathtouch. Your opponent blocks with a 5/5 creature. How much damage can you assign to your opponent?"
+expected_output: "1"
+evaluator: exact

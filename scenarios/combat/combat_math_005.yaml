@@ -1,0 +1,7 @@
+id: combat_math_005
+category: combat
+subcategory: combat_math
+description: "Test combat math with lifelink."
+prompt: "You attack with a 3/3 creature with lifelink. Your opponent blocks with a 2/2 creature. How much life do you gain?"
+expected_output: "3"
+evaluator: exact

@@ -1,0 +1,7 @@
+id: combat_math_016
+category: combat
+subcategory: combat_math
+description: "Test combat math with flying."
+prompt: "You attack with a 3/3 creature with flying. Your opponent controls a 2/2 creature with reach. Can your opponent block your flying creature?"
+expected_output: "yes"
+evaluator: contains

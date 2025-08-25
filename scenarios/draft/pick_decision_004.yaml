@@ -1,0 +1,7 @@
+id: pick_decision_004
+category: draft
+subcategory: pick_decision
+description: "Test draft pick decisions with card advantage."
+prompt: "You're in a draft and must choose between a card that draws 2 cards and a 4-mana 4/4 creature. Which provides better long-term value?"
+expected_output: "card draw"
+evaluator: contains

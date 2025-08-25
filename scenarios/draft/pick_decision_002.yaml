@@ -1,0 +1,7 @@
+id: pick_decision_002
+category: draft
+subcategory: pick_decision
+description: "Test draft pick decisions with color identity."
+prompt: "In a draft, you have been picking blue and black cards. What is the best card to pick next if you have been handed a choice between a Lightning Bolt, a Counterspell, and a Forest?"
+expected_output: "Counterspell"
+evaluator: contains
