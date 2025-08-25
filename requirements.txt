@@ -7,4 +7,6 @@ outlines
 PyYAML
 tqdm
 sentence-transformers  # if you want semantic matching
-
+python-dotenv
+protobuf
+sentencepiece

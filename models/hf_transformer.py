@@ -1,6 +1,10 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 import os
 from typing import List, Union
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 class HFTransformerModel:
     def __init__(self, model_name: str):
