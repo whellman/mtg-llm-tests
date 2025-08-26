@@ -2,7 +2,7 @@
 PACKAGE_NAME := mypack.tar.gz
 
 # Exclude the tarball itself, git data, node_modules, etc. if desired
-EXCLUDES := --exclude=$(PACKAGE_NAME) --exclude=.git 
+EXCLUDES := --exclude=$(PACKAGE_NAME) --exclude=.git --exclude=venv_local 
 
 # Default target
 package:
