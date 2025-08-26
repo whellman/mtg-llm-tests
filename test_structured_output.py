@@ -10,7 +10,6 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from models.outlines_model import OutlinesModel
-from pydantic import BaseModel
 
 def test_structured_output():
     """Test basic structured output functionality"""
@@ -23,12 +22,27 @@ def test_structured_output():
         # Test simple answer
         prompt = "What is 2+2?"
         result = model.run(prompt, output_type="numeric")
-        print(f"Simple answer: {result}")
+        print(f"Numeric answer: {result}")
         
         # Test boolean answer
         prompt = "Is 5 greater than 3?"
-        result = model.run(prompt, output_type="simple")
+        result = model.run(prompt, output_type="boolean")
         print(f"Boolean answer: {result}")
+        
+        # Test card selection with dynamic options
+        prompt = "Choose the best card for a green/white deck from these options."
+        result = model.run(prompt, output_type="card_selection", options=["Lightning Bolt", "Serra Angel", "Llanowar Elves"])
+        print(f"Card selection: {result}")
+        
+        # Test multiple choice
+        prompt = "What is the capital of France?"
+        result = model.run(prompt, output_type="multiple_choice", choices=["London", "Paris", "Berlin", "Madrid"])
+        print(f"Multiple choice: {result}")
+        
+        # Test numeric range
+        prompt = "How much damage do you take when a 6/6 trample attacks you and you block with a 3/3?"
+        result = model.run(prompt, output_type="numeric_range", min_val=0, max_val=10)
+        print(f"Numeric range: {result}")
         
         print("Structured output test completed successfully!")
         return True

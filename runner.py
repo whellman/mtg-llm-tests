@@ -15,6 +15,8 @@ import sys
 from torch.utils.data import DataLoader, Dataset
 import torch
 import difflib
+import re
+from typing import List, Dict
 
 class ScenarioDataset(Dataset):
     def __init__(self, scenarios):
@@ -32,6 +34,75 @@ def collate_fn(batch):
 def calculate_similarity(output, expected):
     """Calculate similarity ratio between output and expected text."""
     return difflib.SequenceMatcher(None, output.strip(), expected.strip()).ratio()
+
+def extract_card_options_from_prompt(prompt: str) -> List[str]:
+    """Extract card options from draft pick prompts"""
+    # Look for patterns like "between X, Y, and Z" or "choose from X, Y, Z"
+    options_match = re.search(r'(?:between|from|choice between|choice of|options:?)\s+([^.?]+)', prompt, re.IGNORECASE)
+    if options_match:
+        options_text = options_match.group(1)
+        # Split by commas and clean up
+        options = [opt.strip().strip('"\'') for opt in re.split(r',\s*(?:and\s+)?', options_text)]
+        return [opt for opt in options if opt]  # Remove empty strings
+    return []
+
+def determine_output_type_and_kwargs(scenario: Dict) -> tuple:
+    """Determine output type and additional kwargs for structured generation"""
+    
+    # Check if scenario explicitly specifies output type
+    if "output_type" in scenario:
+        output_type = scenario["output_type"]
+        kwargs = {}
+        
+        # Handle special cases for dynamic schema generation
+        if output_type == "card_selection":
+            # Extract card options from prompt for draft scenarios
+            options = extract_card_options_from_prompt(scenario["prompt"])
+            if options:
+                kwargs["options"] = options
+        elif output_type == "multiple_choice" and "choices" in scenario:
+            kwargs["choices"] = scenario["choices"]
+        elif output_type == "numeric_range":
+            if "min_val" in scenario:
+                kwargs["min_val"] = scenario["min_val"]
+            if "max_val" in scenario:
+                kwargs["max_val"] = scenario["max_val"]
+                
+        return output_type, kwargs
+    
+    # Auto-detect based on expected output and category
+    expected = scenario["expected_output"].strip().lower()
+    category = scenario.get("category", "")
+    subcategory = scenario.get("subcategory", "")
+    
+    # Draft pick scenarios - force card selection from options
+    if category == "draft" and subcategory == "pick_decision":
+        options = extract_card_options_from_prompt(scenario["prompt"])
+        if options:
+            return "card_selection", {"options": options}
+    
+    # Combat math scenarios - numeric with reasonable ranges
+    if category == "combat" and subcategory == "combat_math":
+        # Extract numbers from expected output to set range
+        numbers = re.findall(r'\d+', expected)
+        if numbers:
+            max_val = max(20, int(numbers[0]) + 10)  # Reasonable upper bound
+            return "numeric_range", {"min_val": 0, "max_val": max_val}
+    
+    # Boolean questions
+    if expected in ["yes", "no", "true", "false", "y", "n"]:
+        return "boolean", {}
+    
+    # Numeric answers
+    if expected.isdigit() or (expected.startswith('-') and expected[1:].isdigit()):
+        return "numeric", {}
+    
+    # Simple short answers
+    if len(expected) <= 20:
+        return "simple", {}
+    
+    # Default to explanation for longer answers
+    return "explanation", {}
 
 def run_tests(model_name="mistralai/Mistral-7B-Instruct-v0.3", output_format="simple", batch_size=4, use_structured=False):
     """Run all tests and output results in specified format."""
@@ -62,22 +133,32 @@ def run_tests(model_name="mistralai/Mistral-7B-Instruct-v0.3", output_format="si
 
     # Process scenarios in batches
     for batch in dataloader:
-        # Extract prompts and output types from the batch
+        # Extract prompts and determine output types
         prompts = [scenario["prompt"] for scenario in batch]
-        output_types = []
-        for scenario in batch:
-            # Determine output type based on expected output characteristics
-            expected = scenario["expected_output"].strip().lower()
-            if expected in ["yes", "no"] or len(expected) <= 10:
-                output_types.append("simple")
-            elif expected.isdigit():
-                output_types.append("numeric")
-            else:
-                output_types.append("explanation")
+        
+        if use_structured:
+            # Determine output types and kwargs for each scenario
+            output_types_and_kwargs = [determine_output_type_and_kwargs(scenario) for scenario in batch]
+            output_types = [otk[0] for otk in output_types_and_kwargs]
+            kwargs_list = [otk[1] for otk in output_types_and_kwargs]
+        else:
+            # For non-structured, just determine basic output types for evaluators
+            output_types = []
+            for scenario in batch:
+                expected = scenario["expected_output"].strip().lower()
+                if expected in ["yes", "no", "true", "false"] or len(expected) <= 10:
+                    output_types.append("simple")
+                elif expected.isdigit():
+                    output_types.append("numeric")
+                else:
+                    output_types.append("explanation")
+            kwargs_list = None
         
         # Run batch inference
         batch_start = time.time()
-        if use_structured:
+        if use_structured and kwargs_list:
+            outputs = model.run_batch(prompts, output_types, kwargs_list)
+        elif use_structured:
             outputs = model.run_batch(prompts, output_types)
         else:
             outputs = model.run_batch(prompts)

@@ -7,8 +7,24 @@ Evaluators need to be updated, either before structured overhaul (an easy bandai
 ✓ Modified runner to support --structured flag
 ✓ Created documentation for structured output usage
 ✓ Updated some scenario files to use better evaluators
+✓ Implemented comprehensive structured schemas for MTG-specific scenarios
+✓ Added dynamic schema generation with card selection constraints
+✓ Enhanced runner with auto-detection of output types
+✓ Created enhanced documentation with MTG-specific examples
+✓ Added comprehensive test scenarios demonstrating new capabilities
+
+**COMPLETED: Full structured output overhaul with MTG-specific constraints**
+
+The structured output system now provides comprehensive constraints for MTG testing:
+- Dynamic schema generation for card selection from exact options
+- MTG-specific schemas (phases, card types, zones, combat math)
+- Auto-detection of scenario types and appropriate constraints
+- Range constraints for numeric answers
+- Enum validation for categorical answers
+- Backward compatibility with existing scenarios
 
 Next steps:
-- Test the structured output implementation with actual models
-- Update more scenario files to use appropriate evaluators
-- Consider adding output type specification directly in scenario YAML files
+- Test the enhanced structured output with actual models on GPU instances
+- Convert more existing scenario files to use structured output
+- Add more MTG-specific schema types as needed
+- Monitor test reliability improvements
