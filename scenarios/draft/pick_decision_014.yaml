@@ -4,5 +4,6 @@ subcategory: pick_decision
 description: "Test draft pick decisions with bombs."
 prompt: "You're offered a powerful rare creature and a solid common removal spell. Which should you prioritize if both are in your colors?"
 expected_output: "removal spell"
-output_type: simple
-evaluator: contains
+output_type: multiple_choice
+choices: ["removal spell", "creature"]
+evaluator: exact

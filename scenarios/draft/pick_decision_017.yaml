@@ -4,5 +4,6 @@ subcategory: pick_decision
 description: "Test draft pick decisions with early game."
 prompt: "Early in a draft, which is generally more important: a powerful late game card or a solid early game card?"
 expected_output: "early game"
-output_type: simple
-evaluator: contains
+output_type: multiple_choice
+choices: ["early game", "late game"]
+evaluator: exact

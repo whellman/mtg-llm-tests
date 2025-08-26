@@ -4,5 +4,6 @@ subcategory: pick_decision
 description: "Test draft pick decisions with redundancy."
 prompt: "You already have 4 copies of a removal spell in your deck. You're offered a 5th copy. Should you take it?"
 expected_output: "no"
-output_type: boolean
-evaluator: contains
+output_type: multiple_choice
+choices: ["yes", "no"]
+evaluator: exact

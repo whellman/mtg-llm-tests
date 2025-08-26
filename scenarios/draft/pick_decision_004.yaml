@@ -4,5 +4,6 @@ subcategory: pick_decision
 description: "Test draft pick decisions with card advantage."
 prompt: "You're in a draft and must choose between a card that draws 2 cards and a 4-mana 4/4 creature. Which provides better long-term value?"
 expected_output: "card draw"
-output_type: simple
-evaluator: contains
+output_type: multiple_choice
+choices: ["card draw", "creature"]
+evaluator: exact

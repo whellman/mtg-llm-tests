@@ -4,5 +4,6 @@ subcategory: pick_decision
 description: "Test draft pick decisions with color depth."
 prompt: "You're drafting a color with many playable cards. How does this affect your pick decisions?"
 expected_output: "more selective"
-output_type: simple
-evaluator: contains
+output_type: multiple_choice
+choices: ["more selective", "less selective", "same selectivity"]
+evaluator: exact

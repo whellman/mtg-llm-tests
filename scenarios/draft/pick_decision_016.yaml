@@ -4,5 +4,6 @@ subcategory: pick_decision
 description: "Test draft pick decisions with late game."
 prompt: "Late in a draft, you have a solid deck but need one more bomb. What should you prioritize in your picks?"
 expected_output: "powerful cards"
-output_type: simple
-evaluator: contains
+output_type: multiple_choice
+choices: ["powerful cards", "synergy cards", "cheap cards"]
+evaluator: exact

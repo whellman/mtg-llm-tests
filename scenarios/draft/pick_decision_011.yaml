@@ -4,5 +4,6 @@ subcategory: pick_decision
 description: "Test draft pick decisions with mana curve."
 prompt: "Your draft deck has many expensive spells but few cheap ones. What type of card should you prioritize?"
 expected_output: "low mana spells"
-output_type: simple
-evaluator: contains
+output_type: multiple_choice
+choices: ["low mana spells", "high mana spells", "removal spells"]
+evaluator: exact

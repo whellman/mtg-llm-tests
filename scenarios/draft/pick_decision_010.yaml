@@ -4,5 +4,6 @@ subcategory: pick_decision
 description: "Test draft pick decisions with signals."
 prompt: "You passed a premium card in your colors early in the draft. Later, you see a decent card in those colors. What does this suggest about the signal?"
 expected_output: "open"
-output_type: simple
-evaluator: contains
+output_type: multiple_choice
+choices: ["open", "closed", "no signal"]
+evaluator: exact
