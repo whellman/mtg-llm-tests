@@ -2,7 +2,7 @@
 PACKAGE_NAME := mypack.tar.gz
 
 # Exclude the tarball itself, git data, node_modules, etc. if desired
-EXCLUDES := --exclude=$(PACKAGE_NAME) --exclude=.git --exclude=venv_local 
+EXCLUDES := --exclude=$(PACKAGE_NAME) --exclude=.git --exclude=venv_local --exclude=__pycache__ 
 
 # Default target
 package:

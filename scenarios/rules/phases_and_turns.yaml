@@ -4,4 +4,5 @@ subcategory: phases_and_turns
 Description: "Test the understanding of the phases and turns in Magic: The Gathering."
 prompt: "List the five phases of a turn in Magic: The Gathering."
 expected_output: "Beginning Phase, Main Phase 1, Combat Phase, Main Phase 2, and the Ending Phase."
+output_type: phase
 evaluator: semantic

@@ -4,4 +4,5 @@ subcategory: pick_decision
 description: "Test draft pick decisions with fixing."
 prompt: "You're drafting green and white. You're offered a Forest, a Plains, and a dual land that can produce both colors. Which is most valuable?"
 expected_output: "dual land"
+output_type: simple
 evaluator: contains

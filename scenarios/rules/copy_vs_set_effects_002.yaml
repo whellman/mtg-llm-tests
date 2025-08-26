@@ -4,4 +4,5 @@ subcategory: copy_vs_set_effects
 description: "Test understanding of copy effects vs set effects."
 prompt: "If a creature's power and toughness are set to 5/5, then it becomes a copy of a 2/2 creature, what are its final stats?"
 expected_output: "2/2"
+output_type: simple
 evaluator: exact

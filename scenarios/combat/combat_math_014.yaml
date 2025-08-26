@@ -4,4 +4,5 @@ subcategory: combat_math
 description: "Test combat math with multiple attackers and defenders."
 prompt: "You attack with three 2/2 creatures. Your opponent blocks one with a 3/3 creature and another with two 1/1 creatures. How many of your creatures deal damage to your opponent?"
 expected_output: "1"
+output_type: numeric
 evaluator: exact

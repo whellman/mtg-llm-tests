@@ -7,4 +7,5 @@ prompt: >
   creature with trample. If you block with a 3/3 creature, how
   much damage will you take?""
 expected_output: "3"
+output_type: numeric
 evaluator: numeric

@@ -4,4 +4,5 @@ subcategory: combat_math
 description: "Test combat math with prevention effects."
 prompt: "You control a 6/6 creature. Your opponent casts a spell that would deal 4 damage to it, but you have an effect that prevents the next 3 damage. How much damage does your creature take?"
 expected_output: "1"
+output_type: numeric
 evaluator: exact

@@ -4,4 +4,5 @@ subcategory: combat_math
 description: "Test combat math with multiple blockers."
 prompt: "You control a 4/4 creature with trample. Your opponent blocks with two 2/2 creatures. How much damage can you assign to your opponent?"
 expected_output: "0"
+output_type: numeric
 evaluator: exact

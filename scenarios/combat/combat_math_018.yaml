@@ -4,4 +4,5 @@ subcategory: combat_math
 description: "Test combat math with shroud."
 prompt: "You control a 3/3 creature with shroud. Can your opponent target it with a spell that says 'target creature'?"
 expected_output: "no"
+output_type: boolean
 evaluator: contains

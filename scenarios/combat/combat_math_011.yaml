@@ -4,4 +4,5 @@ subcategory: combat_math
 description: "Test combat math with infect."
 prompt: "You attack with a 4/4 creature with infect. Your opponent blocks with a 3/3 creature. How many poison counters does your opponent get?"
 expected_output: "4"
+output_type: numeric
 evaluator: exact

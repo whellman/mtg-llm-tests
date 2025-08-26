@@ -4,4 +4,5 @@ subcategory: combat_math
 description: "Test combat math with menace."
 prompt: "You attack with a 4/4 creature with menace. How many creatures must your opponent block with if able?"
 expected_output: "2"
+output_type: numeric
 evaluator: exact

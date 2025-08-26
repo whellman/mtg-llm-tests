@@ -4,4 +4,5 @@ subcategory: pick_decision
 description: "Test draft pick decisions with tempo."
 prompt: "Early in a draft, you're offered a 2-drop creature and a 4-drop creature. Both are good in your deck. Which should you take first?"
 expected_output: "2-drop"
+output_type: simple
 evaluator: contains

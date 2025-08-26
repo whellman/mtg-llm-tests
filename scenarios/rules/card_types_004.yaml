@@ -4,4 +4,5 @@ subcategory: card_types
 Description: "Test if specific cards can target others based on their types."
 prompt: "Can Unsummon target an Ornithopter?"
 expected_output: "yes"
+output_type: boolean
 evaluator: contains

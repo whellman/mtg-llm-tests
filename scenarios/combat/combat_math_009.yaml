@@ -4,4 +4,5 @@ subcategory: combat_math
 description: "Test combat math with banding."
 prompt: "You control two 2/2 creatures, one with banding. Your opponent deals 3 damage to the banded creature. How much damage can you redirect to the other creature?"
 expected_output: "3"
+output_type: numeric
 evaluator: exact

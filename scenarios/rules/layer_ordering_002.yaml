@@ -4,4 +4,5 @@ subcategory: layer_ordering
 description: "Test understanding of layer application order."
 prompt: "A creature has base stats 2/2. In layer 7b it gets +1/+1, and in layer 7c it gets *2. What are its final stats?"
 expected_output: "6/6"
+output_type: simple
 evaluator: exact

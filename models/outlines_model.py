@@ -140,13 +140,13 @@ class OutlinesModel(BaseModel):
         
         return text
     
-    def run_batch(self, prompts: List[str], output_types: List[str] = None, **kwargs_list) -> List[str]:
+    def run_batch(self, prompts: List[str], output_types: List[str] = None, kwargs_list=None) -> List[str]:
         """Run batch inference with structured output constraints"""
         if output_types is None:
             output_types = ["simple"] * len(prompts)
         
         # Handle kwargs for each prompt
-        if not kwargs_list:
+        if kwargs_list is None:
             kwargs_list = [{}] * len(prompts)
         elif len(kwargs_list) != len(prompts):
             kwargs_list = [kwargs_list[0] if kwargs_list else {}] * len(prompts)

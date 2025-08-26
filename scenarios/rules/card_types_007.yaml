@@ -4,4 +4,5 @@ subcategory: card_types
 description: "Test understanding of creature types and subtypes."
 prompt: "Can a card that says 'destroy target Zombie' target a creature that is both a Zombie and a Warrior?"
 expected_output: "yes"
+output_type: boolean
 evaluator: contains

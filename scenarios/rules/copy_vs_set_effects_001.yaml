@@ -6,5 +6,5 @@ prompt: >
   You copy a creature that is currently modified
   by an Equipment. What does the copy inherit?
 expected_output: "base"
+output_type: simple
 evaluator: contains
-

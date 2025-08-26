@@ -4,4 +4,5 @@ subcategory: combat_math
 description: "Test combat math with deathtouch."
 prompt: "You control a 1/1 creature with deathtouch. Your opponent blocks with a 5/5 creature. How many creatures die?"
 expected_output: "2"
+output_type: numeric
 evaluator: exact

@@ -4,4 +4,5 @@ subcategory: card_types
 Description: "Test if specific cards can target others based on their types."
 prompt: "Can Shock target a creature with protection from red?"
 expected_output: "no"
+output_type: boolean
 evaluator: boolean

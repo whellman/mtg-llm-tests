@@ -4,4 +4,5 @@ subcategory: state_based_effects
 description: "Test understanding of state-based effects for damage."
 prompt: "A 3/3 creature has 3 damage marked on it. What happens during the next state-based effects check?"
 expected_output: "destroyed"
+output_type: simple
 evaluator: contains

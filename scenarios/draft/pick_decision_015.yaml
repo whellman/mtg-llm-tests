@@ -4,4 +4,5 @@ subcategory: pick_decision
 description: "Test draft pick decisions with fixing lands."
 prompt: "In a three-color draft, which is generally more valuable: a shock land or a tapped dual land?"
 expected_output: "shock land"
+output_type: simple
 evaluator: contains

@@ -4,4 +4,5 @@ subcategory: pick_decision
 description: "Test draft pick decisions with format awareness."
 prompt: "In a format with many aggressive decks, which type of card becomes more valuable: removal spells or life gain effects?"
 expected_output: "removal spells"
+output_type: simple
 evaluator: contains

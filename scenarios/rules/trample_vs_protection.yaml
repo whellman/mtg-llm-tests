@@ -7,4 +7,5 @@ prompt: >
   by a creature with protection from the attacking
   creature's color, does trample damage still resolve?
 expected_output: "yes"
+output_type: boolean
 evaluator: contains

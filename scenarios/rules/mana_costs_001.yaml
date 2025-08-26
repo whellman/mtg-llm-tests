@@ -4,4 +4,5 @@ subcategory: mana_costs
 Description: "Test the understanding of mana costs in Magic: The Gathering."
 prompt: "What is the total mana cost of a card with the mana symbols {B}{R}{G}?"
 expected_output: "3"
+output_type: numeric
 evaluator: exact

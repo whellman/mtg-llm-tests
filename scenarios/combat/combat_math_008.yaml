@@ -4,4 +4,5 @@ subcategory: combat_math
 description: "Test combat math with indestructible."
 prompt: "You control a 5/5 creature. Your opponent deals 7 damage to it. How much damage does it have marked on it?"
 expected_output: "7"
+output_type: numeric
 evaluator: exact

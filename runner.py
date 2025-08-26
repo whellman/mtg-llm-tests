@@ -157,7 +157,7 @@ def run_tests(model_name="mistralai/Mistral-7B-Instruct-v0.3", output_format="si
         # Run batch inference
         batch_start = time.time()
         if use_structured and kwargs_list:
-            outputs = model.run_batch(prompts, output_types, kwargs_list)
+            outputs = model.run_batch(prompts, output_types, kwargs_list=kwargs_list)
         elif use_structured:
             outputs = model.run_batch(prompts, output_types)
         else:
