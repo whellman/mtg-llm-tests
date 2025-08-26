@@ -1,22 +1,62 @@
 import difflib
 import re
+import json
+
+def _clean_response(response):
+    """Clean response to extract actual answer from JSON if needed"""
+    response = response.strip()
+    # If it looks like JSON, try to extract the answer
+    if response.startswith('{') and response.endswith('}'):
+        try:
+            data = json.loads(response)
+            # Try common JSON field names
+            for key in ['answer', 'value', 'explanation']:
+                if key in data:
+                    return str(data[key])
+        except:
+            pass
+    return response
 
 def exact(output, expected):
-    return output.strip().lower() == expected.strip().lower()
+    # Clean the output to handle JSON responses
+    clean_output = _clean_response(output)
+    return clean_output.strip().lower() == expected.strip().lower()
 
 def contains(output, expected):
-    return expected.strip().lower() in output.strip().lower()
+    # Clean the output to handle JSON responses
+    clean_output = _clean_response(output)
+    return expected.strip().lower() in clean_output.strip().lower()
+
+def _clean_response(response):
+    """Clean response to extract actual answer from JSON if needed"""
+    response = response.strip()
+    # If it looks like JSON, try to extract the answer
+    if response.startswith('{') and response.endswith('}'):
+        try:
+            import json
+            data = json.loads(response)
+            # Try common JSON field names
+            for key in ['answer', 'value', 'explanation']:
+                if key in data:
+                    return str(data[key])
+        except:
+            pass
+    return response
 
 def semantic(output, expected):
     # Simple fuzzy matching using SequenceMatcher
     # FIXME: This is a placeholder for a more sophisticated semantic evaluation
-    ratio = difflib.SequenceMatcher(None, output.strip().lower(), expected.strip().lower()).ratio()
+    clean_output = _clean_response(output)
+    ratio = difflib.SequenceMatcher(None, clean_output.strip().lower(), expected.strip().lower()).ratio()
     return ratio > 0.8  # Consider "semantic match" if similarity > 80%
 
 def numeric_comparison(output, expected):
     """Compare numeric values, handling various formats"""
+    # Clean the output to handle JSON responses
+    clean_output = _clean_response(output)
+    
     # Extract numbers from both strings
-    output_nums = re.findall(r'-?\d+', output)
+    output_nums = re.findall(r'-?\d+', clean_output)
     expected_nums = re.findall(r'-?\d+', expected)
     
     if not output_nums or not expected_nums:
@@ -29,7 +69,9 @@ def numeric_comparison(output, expected):
 
 def boolean_comparison(output, expected):
     """Handle yes/no, true/false comparisons"""
-    output_clean = output.strip().lower()
+    # Clean the output to handle JSON responses
+    clean_output = _clean_response(output)
+    output_clean = clean_output.strip().lower()
     expected_clean = expected.strip().lower()
     
     # Normalize boolean values

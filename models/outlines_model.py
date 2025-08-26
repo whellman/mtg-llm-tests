@@ -45,13 +45,13 @@ class OutlinesModel(BaseModel):
         # Define output schema based on expected type
         if output_type == "numeric":
             schema = NumericAnswer
-            prompt_suffix = "\n\nAnswer with a single number:"
+            prompt_suffix = "\n\nAnswer with ONLY the number. No explanation, no JSON, just the number:"
         elif output_type == "explanation":
             schema = ExplanationAnswer
             prompt_suffix = "\n\nProvide a clear, concise explanation:"
         else:  # simple/default
             schema = SimpleAnswer
-            prompt_suffix = "\n\nAnswer concisely:"
+            prompt_suffix = "\n\nAnswer with ONLY the answer. No explanation, no JSON, just the answer:"
         
         # Create generator with structured output
         generator = outlines.generator.Generator(self.outlines_model, schema)
@@ -62,13 +62,26 @@ class OutlinesModel(BaseModel):
         
         # Extract the answer based on schema
         if hasattr(result, 'answer'):
-            return result.answer
+            return result.answer.strip()
         elif hasattr(result, 'value'):
             return str(result.value)
         elif hasattr(result, 'explanation'):
-            return result.explanation
+            return result.explanation.strip()
         else:
-            return str(result)
+            # Handle case where result might be a string representation
+            result_str = str(result)
+            # Try to extract from JSON-like string if needed
+            if result_str.startswith('{') and result_str.endswith('}'):
+                import json
+                try:
+                    result_dict = json.loads(result_str)
+                    if 'answer' in result_dict:
+                        return str(result_dict['answer']).strip()
+                    elif 'value' in result_dict:
+                        return str(result_dict['value'])
+                except:
+                    pass
+            return result_str.strip()
     
     def run_batch(self, prompts: List[str], output_types: List[str] = None) -> List[str]:
         """Run batch inference with structured output constraints"""
