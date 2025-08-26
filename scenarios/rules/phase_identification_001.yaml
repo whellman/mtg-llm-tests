@@ -1,0 +1,8 @@
+id: phase_identification_001
+category: rules
+subcategory: phases
+description: "Test phase identification with structured output."
+prompt: "During which phase do you untap your permanents at the beginning of your turn?"
+expected_output: "untap"
+evaluator: exact
+output_type: phase

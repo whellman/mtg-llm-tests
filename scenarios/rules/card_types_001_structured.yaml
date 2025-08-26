@@ -1,0 +1,9 @@
+id: card_types_001_structured
+category: rules
+subcategory: card_types
+description: "Test card type identification with structured output."
+prompt: "What type of card is Serra Angel? Choose from: creature, instant, sorcery, enchantment, artifact, land, planeswalker."
+expected_output: "creature"
+evaluator: exact
+output_type: multiple_choice
+choices: ["creature", "instant", "sorcery", "enchantment", "artifact", "land", "planeswalker"]

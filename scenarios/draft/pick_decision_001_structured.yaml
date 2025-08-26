@@ -1,0 +1,11 @@
+id: pick_decision_001_structured
+category: draft
+subcategory: pick_decision
+description: "Test picking optimal cards in a draft with structured output."
+prompt: >
+  "In a draft, you have been picking green and white cards. What 
+  is the best card to pick next if you have been handed a choice
+  between a Millstone, a Serra Angel, and a Llanowar Elves?"
+expected_output: "Llanowar Elves"
+evaluator: exact
+output_type: card_selection
