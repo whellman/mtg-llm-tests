@@ -4,5 +4,6 @@ subcategory: pick_decision
 description: "Test draft pick decisions with sideboarding."
 prompt: "In a draft, which is more important: a versatile card that's good against many decks or a narrow card that's excellent against one specific strategy?"
 expected_output: "versatile"
-output_type: simple
-evaluator: contains
+output_type: multiple_choice
+choices: ["versatile", "narrow"]
+evaluator: exact
