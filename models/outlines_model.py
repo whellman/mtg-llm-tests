@@ -85,7 +85,11 @@ class OutlinesModel(BaseModel):
         """Extract answer from structured output result"""
         # Handle different schema fields
         if hasattr(result, 'answer'):
-            return str(result.answer).strip()
+            answer_value = result.answer
+            # Handle boolean conversion
+            if isinstance(answer_value, bool):
+                return "true" if answer_value else "false"
+            return str(answer_value).strip()
         elif hasattr(result, 'value'):
             return str(result.value)
         elif hasattr(result, 'selected_card'):

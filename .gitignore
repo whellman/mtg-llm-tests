@@ -30,5 +30,7 @@ ENV/
 env/
 venv_local/
 
+# Results files
 results.json
+results*.txt
 

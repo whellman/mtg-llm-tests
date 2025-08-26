@@ -35,14 +35,20 @@ def calculate_similarity(output, expected):
     """Calculate similarity ratio between output and expected text."""
     return difflib.SequenceMatcher(None, output.strip(), expected.strip()).ratio()
 
-def extract_card_options_from_prompt(prompt: str) -> List[str]:
+def extract_card_options_from_prompt(prompt):
     """Extract card options from draft pick prompts"""
     # Look for patterns like "between X, Y, and Z" or "choose from X, Y, Z"
     options_match = re.search(r'(?:between|from|choice between|choice of|options:?)\s+([^.?]+)', prompt, re.IGNORECASE)
     if options_match:
         options_text = options_match.group(1)
         # Split by commas and clean up
-        options = [opt.strip().strip('"\'') for opt in re.split(r',\s*(?:and\s+)?', options_text)]
+        options = []
+        for opt in re.split(r',\s*(?:and\s+)?', options_text):
+            cleaned_opt = opt.strip().strip('"\'')
+            # Remove articles like "a", "an", "the" from the beginning
+            cleaned_opt = re.sub(r'^(a|an|the)\s+', '', cleaned_opt, flags=re.IGNORECASE)
+            if cleaned_opt:
+                options.append(cleaned_opt)
         return [opt for opt in options if opt]  # Remove empty strings
     return []
 
