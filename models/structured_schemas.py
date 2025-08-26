@@ -19,7 +19,7 @@ class NumericAnswer(BaseModel):
 
 class BooleanAnswer(BaseModel):
     """Boolean yes/no answer"""
-    answer: bool = Field(..., description="Boolean answer (True/False)")
+    answer: Literal["yes", "no"] = Field(..., description="Boolean answer (yes/no)")
 
 class ExplanationAnswer(BaseModel):
     """Detailed explanation"""
@@ -117,6 +117,16 @@ class SchemaFactory:
                 enum=choices
             )
         return DynamicMultipleChoice
+    
+    @staticmethod
+    def create_boolean_schema() -> type:
+        """Create a schema for boolean yes/no questions"""
+        class DynamicBoolean(BaseModel):
+            answer: Literal["yes", "no"] = Field(
+                ..., 
+                description="Boolean answer (yes/no)"
+            )
+        return DynamicBoolean
     
     @staticmethod
     def create_numeric_range_schema(min_val: int = 0, max_val: int = 100) -> type:

@@ -42,6 +42,9 @@ class OutlinesModel(BaseModel):
         elif output_type == "numeric_range" and "min_val" in kwargs and "max_val" in kwargs:
             schema = SchemaFactory.create_numeric_range_schema(kwargs["min_val"], kwargs["max_val"])
             prompt_suffix = f"\\n\\nAnswer with a number between {kwargs['min_val']} and {kwargs['max_val']}. No explanation, just the number."
+        elif output_type == "boolean":
+            schema = SchemaFactory.create_boolean_schema()
+            prompt_suffix = "\\n\\nAnswer with ONLY 'yes' or 'no'. No explanation, just the answer:"
         elif output_type in SCHEMA_REGISTRY:
             schema = SCHEMA_REGISTRY[output_type]
             prompt_suffixes = {
@@ -86,9 +89,15 @@ class OutlinesModel(BaseModel):
         # Handle different schema fields
         if hasattr(result, 'answer'):
             answer_value = result.answer
-            # Handle boolean conversion
-            if isinstance(answer_value, bool):
-                return "true" if answer_value else "false"
+            # Handle boolean conversion - now using "yes"/"no" literals
+            if isinstance(answer_value, str) and answer_value in ["yes", "no"]:
+                return answer_value
+            elif isinstance(answer_value, str) and answer_value in ["true", "false"]:
+                # Convert "true"/"false" to "yes"/"no"
+                return "yes" if answer_value == "true" else "no"
+            elif isinstance(answer_value, bool):
+                # Convert boolean to "yes"/"no"
+                return "yes" if answer_value else "no"
             return str(answer_value).strip()
         elif hasattr(result, 'value'):
             return str(result.value)
